@@ -8,6 +8,9 @@
             <li><a href="/"><b>Categories</b></a></li>
             <li><a href="/"><b>Compare</b></a></li>
             @if (Auth::check())
+                @if ( Auth::user()->isAdmin )
+                    <li class="navRight"><a href="{{ url('/admin') }}"><b>Admin</b></a></li>
+                @endif
                 <li class="navRight"><a href="/logout"><b>Logout</a></li>
             @else
                 <li class="navRight"><a href="{{ url('/login') }}"><b>Login</b></a></li>
