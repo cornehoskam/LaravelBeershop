@@ -16,7 +16,7 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
         if ($request->user()->isAdmin == 0) {
-            return redirect('home');
+            return redirect('/');
         }
 
         return $next($request);
