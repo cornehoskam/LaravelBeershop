@@ -1,5 +1,12 @@
 body{
     margin: 0px;
+    text-align: center;
+    background-color: #D3D3D3;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container{
+    padding-top: 50px;
 }
 
 #footer{
@@ -23,4 +30,35 @@ body{
     position: absolute;
     width: 100%;
     box-sizing: border-box;
+}
+
+#header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+#header li {
+    float: left;
+}
+
+#header li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#header li a:hover {
+    background-color: lightgrey;
+}
+
+
+#homebody
+{
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }

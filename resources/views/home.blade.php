@@ -11,9 +11,14 @@
 <body>
 @include('layouts.header', array('title'=>'Home'))
 <div class="container">
-    this is cool<br>
-    or not<br>
-    huh<br><br><br>
+    <br>
+    <div id="homebody">
+        <h2>Want something different? Why not try</h2>
+        <h2> {{$product['name'] }}</h2>
+        <h3><i> {{$product['description']}}</i></h3>
+        <img src="{{ URL::asset('assets/products/'.$product['image_url']) }}" width='200px' height='200px'><br><br>
+    </div>
+</body>
 </div>
 @include('layouts.footer')
 </body>
