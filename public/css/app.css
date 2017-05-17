@@ -22,4 +22,5 @@ body{
     border: 1px solid #ccc;
     position: absolute;
     width: 100%;
+    box-sizing: border-box;
 }

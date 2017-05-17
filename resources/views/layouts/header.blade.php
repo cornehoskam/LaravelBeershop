@@ -1,4 +1,4 @@
-<title>GA - {{ $title }}</title>
+<title>The Beershop - {{ $title }}</title>
 
 @section('navigation')
     <nav id="header">
