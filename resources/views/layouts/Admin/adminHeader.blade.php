@@ -1,0 +1,15 @@
+<title>The Beershop - {{ $title }}</title>
+
+@section('navigation')
+    <nav id="header">
+        <ul>
+            <li><img src="{{ URL::asset('assets/header.png') }}" width="250px" height="40px"></li>
+            <li><a href=""><b>Products</b></a></li>
+            <li><a href="/"><b>Categories</b></a></li>
+            <li><a href="/"><b>Users</b></a></li>
+            <li><a href="/"><b>Orders</b></a></li>
+            <li class="navRight"><a href="/logout"><b>Logout</a></li>
+            <li class="navRight"><a href="{{ url('/') }}"><b>Home</b></a></li>
+        </ul>
+    </nav>
+@show
