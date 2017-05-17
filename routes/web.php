@@ -16,3 +16,10 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 //Authentication Routes
 Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();
+
+//admin Routes
+Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
+{
+    Route::get('/admin', 'Admin\AdminController@index');
+
+});
