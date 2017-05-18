@@ -16,12 +16,12 @@
         {{ csrf_field() }}
         <ul class="categories">
             @foreach ($products as $product)
-                <li><input type="checkbox" name="delete[]" value="{{$product->id}}"><a>{{$product->id}} {{$product->name}}</a></li><br>
+                <li><input type="checkbox" name="delete[]" value="{{$product->id}}"><a href="/admin/product/{{$product->id}}">{{$product->id}} {{$product->name}}</a></li><br>
             @endforeach
         </ul>
         <button type="submit">Delete</button>
     </form>
-    <button type="submit">Add</button>
+    <a class="button" href="/admin/product">Add</a>
 </div>
 </body>
 @include('layouts.footer')
