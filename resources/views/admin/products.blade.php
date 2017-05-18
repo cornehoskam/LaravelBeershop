@@ -20,8 +20,8 @@
             @endforeach
         </ul>
         <button type="submit">Delete</button>
-        <button type="submit">Add</button>
     </form>
+    <button type="submit">Add</button>
 </div>
 </body>
 @include('layouts.footer')
