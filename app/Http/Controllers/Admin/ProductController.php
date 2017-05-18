@@ -14,4 +14,16 @@ class ProductController extends Controller
 
         return view('admin/products', compact('products'));
     }
+
+   public function delete(Request $request){
+
+       if ($request->has('delete')) {
+           $ids = $request->input('delete');
+           foreach($ids as $id) {
+               product::where("id", "=", $id)->delete();
+           }
+       }
+       return ProductController::index();
+   }
 }
+
