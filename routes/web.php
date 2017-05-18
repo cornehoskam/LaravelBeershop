@@ -21,6 +21,9 @@ Auth::routes();
 Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
 {
     Route::get('/admin', 'Admin\AdminController@index');
+
+    //products
     Route::get('/admin/products', 'Admin\ProductController@index');
+    Route::post('/admin/products/delete', 'Admin\ProductController@delete');
 
 });
