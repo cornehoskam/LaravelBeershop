@@ -25,5 +25,23 @@ class ProductController extends Controller
        }
        return ProductController::index();
    }
+
+   public function showProduct($id=null){
+      $product = product::find($id);
+       return view('admin/product', compact('product'));
+   }
+
+   public function createOrUpdate(Request $request){
+       $product = product::updateOrCreate(
+           ['id' => $request->input('id')],
+           ['name' => $request->input('name'),
+               'price' => $request->input('price'),
+               'alcohol_contents' => $request->input('alcohol'),
+               'contents_ml' => $request->input('contents'),
+               'parent_category' => $request->input('category'),
+               'description' => $request->input('description')]
+       );
+
+   }
 }
 
