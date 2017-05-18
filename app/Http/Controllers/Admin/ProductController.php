@@ -39,7 +39,8 @@ class ProductController extends Controller
                'alcohol_contents' => $request->input('alcohol'),
                'contents_ml' => $request->input('contents'),
                'parent_category' => $request->input('category'),
-               'description' => $request->input('description')]
+               'description' => $request->input('description'),
+               'image_url' => 'null']                               //todo image uploading
        );
 
    }
