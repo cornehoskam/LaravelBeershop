@@ -12,10 +12,11 @@
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
 <div class="container">
     <h2>Add, change or delete a product</h2>
-    <form>
+    <form action="/admin/products/delete" method="POST">
+        {{ csrf_field() }}
         <ul class="categories">
             @foreach ($products as $product)
-                <li><input type="checkbox" name="delete" value="{{$product->id}}"><a>{{$product->id}} {{$product->name}}</a></li><br>
+                <li><input type="checkbox" name="delete[]" value="{{$product->id}}"><a>{{$product->id}} {{$product->name}}</a></li><br>
             @endforeach
         </ul>
         <button type="submit">Delete</button>
