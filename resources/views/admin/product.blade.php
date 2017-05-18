@@ -24,9 +24,13 @@
                         style="padding-right: 55px;" @if(isset($product->alcohol_contents))value="{{$product->alcohol_contents}}"@endif/></li>
             <li><label>Contents (in ml)<span class="required">*</span></label> <input
                         type="number" step="any" name="contents" class="field-long"@if(isset($product->contents_ml))value="{{$product->contents_ml}}"@endif /></li>
-            <li><label>Category<span class="required">*</span></label> <select
+            <li><label>Category<span class="required">*</span></label> <select                                                                                          {{--todo add subcategory--}}
                         name="category" class="field-select"@if(isset($product->parent_category))value="{{$product->parent_category}}"@endif>
-                        </select></li>
+
+                @foreach($categories as $category)
+                        <option value="{{$category->id}}" @if(isset($product->parent_category) && $category->id == $product->parent_category) selected @endif>{{$category->name}}</option>
+                @endforeach
+                </select></li>
             <li><label>Description</label> <textarea name="description" id="Description"
                                                      class="field-long field-textarea"> @if(isset($product->description)){{$product->description}}@endif</textarea></li>
             <li><input type="submit" name="save" value="Save" /></li>
