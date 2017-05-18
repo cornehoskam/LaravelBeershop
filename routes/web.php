@@ -25,5 +25,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     //products
     Route::get('/admin/products', 'Admin\ProductController@index');
     Route::post('/admin/products/delete', 'Admin\ProductController@delete');
+    Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
+    Route::post('/admin/product', 'Admin\ProductController@createOrUpdate');
 
 });
