@@ -11,10 +11,12 @@
 <body>
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
     <h2>@if(isset($product->name)){{$product->name}} @else "Add product" @endif</h2>
-    <form action="/admin/product" method="POST">
+    <form action="/admin/product" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <ul class="styledForm">
             <input type="hidden" name="id" value="@if(isset($product->id)){{$product->id}} @else 0 @endif" >
+            <li><label>Image<span class="required">*</span></label> <input
+                        type="file" name="image"</li>
             <li><label>Name<span class="required">*</span></label> <input
                         type="text" name="name" class="field-long" @if(isset($product->name))value="{{$product->name}}"@endif/></li>
             <li><label>Price (in €)<span class="required">*</span></label> <input

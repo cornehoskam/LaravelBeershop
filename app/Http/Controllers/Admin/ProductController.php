@@ -6,7 +6,7 @@ use App\categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\product;
-
+use App\Http\Controllers\FileController;
 class ProductController extends Controller
 {
     public function index()
@@ -33,6 +33,7 @@ class ProductController extends Controller
    }
 
    public function createOrUpdate(Request $request){
+        FileController::Upload();
        $product = product::updateOrCreate(
            ['id' => $request->input('id')],
            ['name' => $request->input('name'),

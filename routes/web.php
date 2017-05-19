@@ -17,6 +17,7 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();
 
+
 //admin Routes
 Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
 {
@@ -27,5 +28,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::post('/admin/products/delete', 'Admin\ProductController@delete');
     Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
     Route::post('/admin/product', 'Admin\ProductController@createOrUpdate');
+        //File upload
+        //Route::post('admin/upload', 'FileController@upload');
 
 });
