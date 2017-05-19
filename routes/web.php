@@ -27,7 +27,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::get('/admin/products', 'Admin\ProductController@index');
     Route::post('/admin/products/delete', 'Admin\ProductController@delete');
     Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
-    Route::post('/admin/product', 'Admin\ProductController@createOrUpdate');
+    Route::post('/admin/product', 'FileController@upload');
         //File upload
         //Route::post('admin/upload', 'FileController@upload');
 

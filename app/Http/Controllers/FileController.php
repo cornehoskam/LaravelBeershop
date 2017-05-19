@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Input;
+use App\Http\Controllers\Admin\ProductController;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use Redirect;
 use Request;
 use Session;
 
 class FileController extends Controller {
-    public function upload() {
+    public function upload(Request $request) {
         // getting all of the post data
         $file = array('image' => Input::file('image'));
         // setting up rules
@@ -29,12 +30,13 @@ class FileController extends Controller {
                 Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
                 // sending back with message
                 Session::flash('success', 'Upload successfully');
-                return Redirect::to('upload');
+                return Redirect::to('admin/product');
+                ProductController::createOrUpdate($request, $fileName);
             }
             else {
                 // sending back with error message.
                 Session::flash('error', 'uploaded file is not valid');
-                return Redirect::to('/admin/product');
+
             }
         }
     }

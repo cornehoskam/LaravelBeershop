@@ -32,7 +32,7 @@ class ProductController extends Controller
        return view('admin/product', compact(['product','categories']));
    }
 
-   public function createOrUpdate(Request $request){
+   public function createOrUpdate(Request $request, $filename){
         FileController::Upload();
        $product = product::updateOrCreate(
            ['id' => $request->input('id')],
@@ -42,7 +42,7 @@ class ProductController extends Controller
                'contents_ml' => $request->input('contents'),
                'parent_category' => $request->input('category'),
                'description' => $request->input('description'),
-               'image_url' => 'null']                               //todo image uploading
+               'image_url' => $filename]                               //todo image uploading
        );
        return ProductController::index();
    }
