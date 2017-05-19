@@ -17,6 +17,7 @@
             <input type="hidden" name="id" value="@if(isset($product->id)){{$product->id}} @else 0 @endif" >
             <li><label>Image<span class="required">*</span></label> <input
                         type="file" name="image"</li>
+            @if(isset($product->image_url))<li><img src="{{ URL::asset('assets/products/'.$product->image_url) }}" width='200px' height='200px'></li>@endif
             <li><label>Name<span class="required">*</span></label> <input
                         type="text" name="name" class="field-long" @if(isset($product->name))value="{{$product->name}}"@endif/></li>
             <li><label>Price (in €)<span class="required">*</span></label> <input
