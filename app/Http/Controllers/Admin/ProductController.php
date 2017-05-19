@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\product;
 use App\Http\Controllers\FileController;
+use File;
 class ProductController extends Controller
 {
     public function index()
@@ -20,6 +21,8 @@ class ProductController extends Controller
        if ($request->has('delete')) {
            $ids = $request->input('delete');
            foreach($ids as $id) {
+               $imageName = product::find($id)->image_url;
+               File::delete(public_path().'/assets/products/'.$imageName);
                product::where("id", "=", $id)->delete();
            }
        }
@@ -33,7 +36,6 @@ class ProductController extends Controller
    }
 
    public function createOrUpdate(Request $request, $filename){
-        FileController::Upload();
        $product = product::updateOrCreate(
            ['id' => $request->input('id')],
            ['name' => $request->input('name'),
@@ -42,9 +44,8 @@ class ProductController extends Controller
                'contents_ml' => $request->input('contents'),
                'parent_category' => $request->input('category'),
                'description' => $request->input('description'),
-               'image_url' => $filename]                               //todo image uploading
+               'image_url' => $filename]
        );
-       return ProductController::index();
    }
 }
 
