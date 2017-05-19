@@ -15,6 +15,7 @@
         {{ csrf_field() }}
         <ul class="styledForm">
             <input type="hidden" name="id" value="@if(isset($product->id)){{$product->id}} @else 0 @endif" >
+            <input type="hidden" name="image_default" value="@if(isset($product->image_url)){{$product->image_url}} @else null @endif" >
             <li><label>Image<span class="required">*</span></label> <input
                         type="file" name="image"</li>
             @if(isset($product->image_url))<li><img src="{{ URL::asset('assets/products/'.$product->image_url) }}" width='200px' height='200px'></li>@endif

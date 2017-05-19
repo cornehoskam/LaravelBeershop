@@ -17,27 +17,30 @@ class FileController extends Controller {
         $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
-        if ($validator->fails()) {
-            // send back to the page with the input data and errors
-            return Redirect::to('products')->withInput()->withErrors($validator);
+        if(Input::has('image')) {
+            if ($validator->fails()) {
+                // send back to the page with the input data and errors
+                return app('App\Http\Controllers\Admin\ProductController')->index();
+            } else {
+                // checking file is valid.
+                if (Input::file('image')->isValid()) {
+                    $destinationPath = 'assets/products/'; // upload path
+                    $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+                    $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+                    Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+                    // sending back with message
+                    Session::flash('success', 'Upload successfully');
+                    app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName);
+                    return app('App\Http\Controllers\Admin\ProductController')->index();
+                } else {
+                    // sending back with error message.
+                    Session::flash('error', 'uploaded file is not valid');
+                    return app('App\Http\Controllers\Admin\ProductController')->index();
+                }
+            }
         }
-        else {
-            // checking file is valid.
-            if (Input::file('image')->isValid()) {
-                $destinationPath = 'assets/products/'; // upload path
-                $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
-                $fileName = rand(11111,99999).'.'.$extension; // renameing image
-                Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
-                // sending back with message
-                Session::flash('success', 'Upload successfully');
-                app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName);
-                return  app('App\Http\Controllers\Admin\ProductController')->index();
-            }
-            else {
-                // sending back with error message.
-                Session::flash('error', 'uploaded file is not valid');
-
-            }
+        else{
+            app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, Input::get('image_default'));
         }
     }
 }
