@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Redirect;
-use Request;
+use Illuminate\Http\Request;
 use Session;
 
 class FileController extends Controller {
@@ -19,7 +19,7 @@ class FileController extends Controller {
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errors
-            return Redirect::to('upload')->withInput()->withErrors($validator);
+            return Redirect::to('products')->withInput()->withErrors($validator);
         }
         else {
             // checking file is valid.
@@ -30,8 +30,8 @@ class FileController extends Controller {
                 Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
                 // sending back with message
                 Session::flash('success', 'Upload successfully');
-                return Redirect::to('admin/product');
-                ProductController::createOrUpdate($request, $fileName);
+                app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName);
+                return  app('App\Http\Controllers\Admin\ProductController')->index();
             }
             else {
                 // sending back with error message.
