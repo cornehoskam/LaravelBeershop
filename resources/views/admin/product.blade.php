@@ -25,7 +25,7 @@
                         type="number" step="any" name="price" class="field-long" @if(isset($product->price))value="{{$product->price}}"@endif/></li>
             <li><label>Alcohol (in %vol)<span class="required">*</span></label> <input
                         type="number" step="any" name="alcohol" class="field-long"
-                        style="padding-right: 55px;" @if(isset($product->alcohol_contents))value="{{$product->alcohol_contents}}"@endif/></li>
+                       @if(isset($product->alcohol_contents))value="{{$product->alcohol_contents}}"@endif/></li>
             <li><label>Contents (in ml)<span class="required">*</span></label> <input
                         type="number" step="any" name="contents" class="field-long"@if(isset($product->contents_ml))value="{{$product->contents_ml}}"@endif /></li>
             <li><label>Category<span class="required">*</span></label> <select                                                                                          {{--todo add subcategory--}}
