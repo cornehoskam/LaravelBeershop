@@ -14,13 +14,13 @@
     <br>
     <h1>{{$cat['name']}}</h1>
     <div id="standardList">
-        <h2>Subcategories</h2>
-        <ul id="categories">
         @foreach($subcat as $subcat)
-                {{$subcat->name}}
+            {{$subcat->name}}
         @endforeach
-        </ul>
         <h2>Products</h2>
+        @foreach($products as $product)
+            {{$product->name}} <br>
+        @endforeach
     </div>
 </body>
 </div>
