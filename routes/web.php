@@ -13,4 +13,6 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+Route::get('category/{id}', ['uses' =>  'CategoryController@getCategoryPage']);
+
 Auth::routes();
