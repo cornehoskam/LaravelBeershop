@@ -12,9 +12,12 @@
 @include('layouts.header', array('title'=>$cat['name']))
 <div class="container">
     <br>
-    <h1>{{$cat['name']}}</h1>
+    <h1>{{$parentcat['name']}} - {{$cat['name']}}</h1>
     <div id="standardList">
         <h2>Products</h2>
+        @if($empty)
+            This subcategory does not have any products listed!
+        @endif
         @foreach($products as $product)
             {{$product->name}} <br>
         @endforeach

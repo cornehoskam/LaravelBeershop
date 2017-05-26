@@ -15,6 +15,7 @@ class CategoryController extends Controller
         $cat = categorie::find($id);
         $subcat = sub_categorie::where('parent_category', $id)->get();
         $products = product::where('parent_category', $id)->get();
-        return view('category', compact('cat', 'subcat', 'products'));
+        $empty = $products->isEmpty();
+        return view('category', compact('cat', 'subcat', 'products', 'empty'));
     }
 }

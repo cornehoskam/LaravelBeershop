@@ -16,11 +16,14 @@
     <div id="standardList">
         @foreach($subcat as $subcat)
             @php
-            $route = "/subcategory/".$subcat->id;
-            echo "<a href='".$route."'>".$subcat->name." </a>";
+                $route = "/subcategory/".$subcat->id;
+                echo "<a href='".$route."'>".$subcat->name." </a>";
             @endphp
         @endforeach
         <h2>Products</h2>
+        @if($empty)
+            This category does not have any products listed!
+        @endif
         @foreach($products as $product)
             {{$product->name}} <br>
         @endforeach
