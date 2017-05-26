@@ -19,6 +19,8 @@
                 </div>
             </li>
             <li><a href="/"><b>Compare</b></a></li>
+            <li><a href="{{URL::route('about')}}"><b>About</b></a></li>
+
         </ul>
     </nav>
 @show
