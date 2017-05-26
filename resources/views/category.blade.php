@@ -15,7 +15,10 @@
     <h1>{{$cat['name']}}</h1>
     <div id="standardList">
         @foreach($subcat as $subcat)
-            {{$subcat->name}}
+            @php
+            $route = "/subcategory/".$subcat->id;
+            echo "<a href='".$route."'>".$subcat->name." </a>";
+            @endphp
         @endforeach
         <h2>Products</h2>
         @foreach($products as $product)
