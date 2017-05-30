@@ -13,7 +13,8 @@
 <div class="container">
     <br>
     <div id="homebody">
-        <h2>Whoops, we could not find the page you were looking for!</h2>
+        <h2>Error 404</h2> <br>
+        <h3>Our highly trained staff of drunk monkeys could not find the page you were looking for!</h3>
     </div>
 </body>
 </div>
