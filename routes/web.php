@@ -13,4 +13,11 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+Route::get('Category/{catname}', ['uses' =>  'CategoryController@getCategoryPage']);
+Route::get('Category/{catname}/Subcategory/{subcatname}', ['uses' =>  'SubcategoryController@getCategoryPage']);
+
+Route::get('about', array('as' => 'about', function () {
+    return view('about');
+}));
+
 Auth::routes();
