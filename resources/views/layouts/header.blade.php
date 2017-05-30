@@ -12,7 +12,7 @@
                 <div class="dropdown-content">
                     @foreach($categories as $cat)
                         @php
-                            $route = "/category/".$cat->id;
+                            $route = "/Category/".$cat->name;
                             echo "<a href='".$route."'>".$cat->name." </a>"
                         @endphp
                     @endforeach

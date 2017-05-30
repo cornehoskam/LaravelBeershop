@@ -9,24 +9,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('layouts.header', array('title'=>$cat['name']))
+@include('layouts.header', array('title'=>'Page not Found'))
 <div class="container">
     <br>
-    <h1>{{$cat['name']}}</h1>
-    <div id="standardList">
-        @foreach($subcat as $subcat)
-            @php
-                $route = "/Category/".$cat['name']."/Subcategory/".$subcat->name;
-                echo "<a href='".$route."'>".$subcat->name." </a>";
-            @endphp
-        @endforeach
-        <h2>Products</h2>
-        @if($empty)
-            This category does not have any products listed!
-        @endif
-        @foreach($products as $product)
-            {{$product->name}} <br>
-        @endforeach
+    <div id="homebody">
+        <h2>Whoops, we could not find the page you were looking for!</h2>
     </div>
 </body>
 </div>

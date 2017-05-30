@@ -13,8 +13,8 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-Route::get('category/{id}', ['uses' =>  'CategoryController@getCategoryPage']);
-Route::get('subcategory/{id}', ['uses' =>  'SubcategoryController@getCategoryPage']);
+Route::get('Category/{catname}', ['uses' =>  'CategoryController@getCategoryPage']);
+Route::get('Category/{catname}/Subcategory/{subcatname}', ['uses' =>  'SubcategoryController@getCategoryPage']);
 
 Route::get('about', array('as' => 'about', function () {
     return view('about');

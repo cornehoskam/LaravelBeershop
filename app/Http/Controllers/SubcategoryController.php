@@ -9,12 +9,18 @@ use App\sub_categorie;
 
 class SubcategoryController extends Controller
 {
-    public function getCategoryPage($id)
+    public function getCategoryPage($catname, $subcatname)
     {
-        $cat = sub_categorie::find($id);
-        $parentcat = categorie::find($cat->parent_category);
-        $products = product::where('parent_sub_category', $id)->get();
-        $empty = $products->isEmpty();
-        return view('subcategory', compact('cat', 'products', 'parentcat', 'empty'));
+        $cat = sub_categorie::where('name', $subcatname)->first();
+        if ($cat != null) {
+            $parentcat = categorie::find($cat->parent_category);
+            $products = product::where('parent_sub_category', $cat->id)->get();
+            $empty = $products->isEmpty();
+            return view('subcategory', compact('cat', 'products', 'parentcat', 'empty'));
+        }
+        else
+        {
+            return view('errors.404');
+        }
     }
 }
