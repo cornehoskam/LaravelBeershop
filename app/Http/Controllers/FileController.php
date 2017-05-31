@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductController as ProductController;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Redirect;
@@ -17,10 +17,10 @@ class FileController extends Controller {
         $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
-        if(Input::has('image_url')) {
+        if(Input::hasFile('image_url')) {
             if ($validator->fails()) {
                 // send back to the page with the input data and errors
-                return app('App\Http\Controllers\Admin\ProductController')->index();
+                return redirect()->action('ProductController@homo')->withErrors(['error', $validator]);
             } else {
                 // checking file is valid.
                 if (Input::file('image_url')->isValid()) {
@@ -30,12 +30,11 @@ class FileController extends Controller {
                     Input::file('image_url')->move($destinationPath, $fileName); // uploading file to given path
                     // sending back with message
                     Session::flash('success', 'Upload successfully');
-                    app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName);
-                    return app('App\Http\Controllers\Admin\ProductController')->index();
+                   return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName);
                 } else {
                     // sending back with error message.
                     Session::flash('error', 'uploaded file is not valid');
-                    return app('App\Http\Controllers\Admin\ProductController')->index();
+                    return app('App\Http\Controllers\Admin\ProductController')->index()->withErrors(['error', 'uploaded file is not valid']);
                 }
             }
         }
