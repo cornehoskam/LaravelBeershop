@@ -54,7 +54,7 @@ class ProductController extends Controller
                }
             }
        if($error == true){
-           $request = $filename;
+           $request->merge(array('image_url' => $filename));
            return ProductController::showProduct(null,$request,"One or more required fields were left empty: ". join(', ', $empty));
        }
        else{
