@@ -11,6 +11,9 @@
 <body>
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
 <div class="container">
+    @if($errors->any())
+        <h4>{{$errors->first()}}</h4>
+    @endif
     <h2>Add, change or delete a product</h2>
     <form action="/admin/products/delete" method="POST">
         {{ csrf_field() }}
