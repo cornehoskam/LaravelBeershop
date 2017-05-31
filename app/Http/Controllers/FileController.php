@@ -8,6 +8,7 @@ use Validator;
 use Redirect;
 use Illuminate\Http\Request;
 use Session;
+use File;
 
 class FileController extends Controller {
     public function upload(Request $request) {
@@ -27,7 +28,8 @@ class FileController extends Controller {
                 // checking file is valid.
                 if (Input::file('image_url')->isValid()) {
                     $destinationPath = 'assets/products/'; // upload path
-                    $fileName = rand(11111, 99999) . '.' .  $image_type; // renameing image
+                    $fileName = 'product_' . $request->input('id') .'.'.  $image_type; // renameing image
+                    File::delete($destinationPath.$fileName);
                     Input::file('image_url')->move($destinationPath, $fileName); // uploading file to given path
                     // sending back with message
                    return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName)->withErrors(['success', 'Product is saved']);
