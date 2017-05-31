@@ -14,8 +14,6 @@
 <br>
 <br>
 <br><br>
-
-{{$error}}
 <h2>@if(isset($product->name)){{$product->name}} @else Add product" @endif</h2>
     <form action="/admin/product" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -34,12 +32,19 @@
                        @if(isset($product->alcohol_contents))value="{{$product->alcohol_contents}}"@endif/></li>
             <li><label>Contents (in ml)<span class="required">*</span></label> <input
                         type="number" step="any" name="contents_ml" class="field-long"@if(isset($product->contents_ml))value="{{$product->contents_ml}}"@endif /></li>
-            <li><label>Category<span class="required">*</span></label> <select                                                                                          {{--todo add subcategory--}}
+            <li><label>Category<span class="required">*</span></label> <select
                         name="parent_category" class="field-select"@if(isset($product->parent_category))value="{{$product->parent_category}}"@endif>
 
                 @foreach($categories as $category)
                         <option value="{{$category->id}}" @if(isset($product->parent_category) && $category->id == $product->parent_category) selected @endif>{{$category->name}}</option>
                 @endforeach
+                </select></li>
+            <li><label>Subcategory</label> <select
+                       name="parent_sub_category" class="field-select"@if(isset($product->parent_category))value="{{$product->parent_category}}"@endif>
+                    <option value="null">Select a sub category</option>
+                    @foreach($sub_categories as $sub_category)
+                        <option value="{{$sub_category->id}}" @if(isset($product->parent_sub_category) && $sub_category->id == $product->parent_sub_category) selected @endif>{{$sub_category->name}}</option>
+                    @endforeach
                 </select></li>
             <li><label>Description</label> <textarea name="description" id="Description"
                                                      class="field-long field-textarea"> @if(isset($product->description)){{$product->description}}@endif</textarea></li>

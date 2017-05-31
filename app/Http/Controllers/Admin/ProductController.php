@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\categorie;
+use App\sub_categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\product;
@@ -29,7 +30,7 @@ class ProductController extends Controller
        return ProductController::index();
    }
 
-   public function showProduct($id=null, Request $request=null, $error=null){
+   public function showProduct($id=null, Request $request=null){
 
        if($id==null){
 
@@ -39,7 +40,8 @@ class ProductController extends Controller
            $product = product::find($id);
        }
        $categories = categorie::all();
-       return view('admin/product', compact(['product','categories','error']));
+       $sub_categories = sub_categorie::all();
+       return view('admin/product', compact(['product','categories','sub_categories']));
    }
 
    public function createOrUpdate(Request $request, $filename){
@@ -65,6 +67,7 @@ class ProductController extends Controller
                'alcohol_contents' => $request->input('alcohol_contents'),
                'contents_ml' => $request->input('contents_ml'),
                'parent_category' => $request->input('parent_category'),
+               'parent_sub_category' => $request->input('parent_sub_category'),
                'description' => $request->input('description'),
                'image_url' => $filename]
        );
