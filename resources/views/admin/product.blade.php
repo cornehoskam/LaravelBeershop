@@ -10,32 +10,26 @@
 </head>
 <body>
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
-<br>
-<br>
-<br>
-<br><br>
-
-{{$error}}
-<h2>@if(isset($product->name)){{$product->name}} @else Add product" @endif</h2>
+    <h2>@if(isset($product->name)){{$product->name}} @else "Add product" @endif</h2>
     <form action="/admin/product" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <ul class="styledForm">
             <input type="hidden" name="id" value="@if(isset($product->id)){{$product->id}} @else 0 @endif" >
             <input type="hidden" name="image_default" value="@if(isset($product->image_url)){{$product->image_url}} @else null @endif" >
             <li><label>Image<span class="required">*</span></label> <input
-                        type="file" name="image_url"</li>
+                        type="file" name="image"</li>
             @if(isset($product->image_url))<li><img src="{{ URL::asset('assets/products/'.$product->image_url) }}" width='200px' height='200px'></li>@endif
             <li><label>Name<span class="required">*</span></label> <input
                         type="text" name="name" class="field-long" @if(isset($product->name))value="{{$product->name}}"@endif/></li>
             <li><label>Price (in €)<span class="required">*</span></label> <input
                         type="number" step="any" name="price" class="field-long" @if(isset($product->price))value="{{$product->price}}"@endif/></li>
             <li><label>Alcohol (in %vol)<span class="required">*</span></label> <input
-                        type="number" step="any" name="alcohol_contents" class="field-long"
+                        type="number" step="any" name="alcohol" class="field-long"
                        @if(isset($product->alcohol_contents))value="{{$product->alcohol_contents}}"@endif/></li>
             <li><label>Contents (in ml)<span class="required">*</span></label> <input
-                        type="number" step="any" name="contents_ml" class="field-long"@if(isset($product->contents_ml))value="{{$product->contents_ml}}"@endif /></li>
+                        type="number" step="any" name="contents" class="field-long"@if(isset($product->contents_ml))value="{{$product->contents_ml}}"@endif /></li>
             <li><label>Category<span class="required">*</span></label> <select                                                                                          {{--todo add subcategory--}}
-                        name="parent_category" class="field-select"@if(isset($product->parent_category))value="{{$product->parent_category}}"@endif>
+                        name="category" class="field-select"@if(isset($product->parent_category))value="{{$product->parent_category}}"@endif>
 
                 @foreach($categories as $category)
                         <option value="{{$category->id}}" @if(isset($product->parent_category) && $category->id == $product->parent_category) selected @endif>{{$category->name}}</option>
