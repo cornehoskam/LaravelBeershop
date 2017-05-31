@@ -34,7 +34,8 @@ ul.categories li a:hover
 }
 
 .container{
-    padding-top: 50px;
+    padding-top: 20px;
+    margin-bottom: 10%;
 }
 
 #footer{
@@ -64,7 +65,7 @@ ul.categories li a:hover
     background-color: #f1f1f1;
 }
 
-li {
+#header li {
     float: left;
 }
 
@@ -80,7 +81,7 @@ li {
     background-color: lightgrey;
 }
 
- li.dropdown {
+ #header li.dropdown {
     display: inline-block;
 }
 
