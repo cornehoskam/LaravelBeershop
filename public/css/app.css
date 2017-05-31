@@ -1,8 +1,40 @@
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    font: 13.3333px Arial;
+    text-decoration: none;
+    color: initial;
+    padding: 1px 6px;
+}
+
 body{
     margin: 0px;
     text-align: center;
     background-color: #D3D3D3;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.categories li
+{
+    display:block;
+    color: black;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    background-color: #f1f1f1;
+}
+
+
+ul.categories li a:hover
+{
+    background-color: #f1f1f1;
+}
+
+.container{
+    padding-top: 50px;
 }
 
 #footer{
@@ -50,6 +82,125 @@ li {
 
  li.dropdown {
     display: inline-block;
+}
+
+#homebody
+{
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.navRight
+{
+    float: right !important;
+}
+
+.styledForm {
+    margin:10px auto;
+    max-width: 400px;
+    padding: 20px 12px 10px 20px;
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.styledForm li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+.styledForm label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+}
+.styledForm input[type=text],
+.styledForm input[type=password],
+.styledForm input[type=date],
+.styledForm input[type=datetime],
+.styledForm input[type=number],
+.styledForm input[type=search],
+.styledForm input[type=time],
+.styledForm input[type=url],
+.styledForm input[type=email],
+textarea,
+select{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin:0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+}
+.styledForm input[type=password],
+.styledForm input[type=text]:focus,
+.styledForm input[type=date]:focus,
+.styledForm input[type=datetime]:focus,
+.styledForm input[type=number]:focus,
+.styledForm input[type=search]:focus,
+.styledForm input[type=time]:focus,
+.styledForm input[type=url]:focus,
+.styledForm input[type=email]:focus,
+.styledForm textarea:focus,
+.styledForm select:focus{
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+.styledForm .field-divided{
+    width: 49%;
+}
+
+.styledForm .field-long{
+    width: 100%;
+}
+.styledForm .field-select{
+    width: 100%;
+}
+.styledForm .field-textarea{
+    height: 100px;
+}
+
+.styledForm .field-number{
+    width: 10%;
+}
+.styledForm input[type=submit], .styledForm input[type=button]{
+    background: #f1f1f1;
+    padding: 8px 15px 8px 15px;
+    border: none;
+}
+.styledForm input[type=submit]:hover, .styledForm input[type=button]:hover{
+    background: #ddd;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.styledForm .required{
+    color:red;
+}
+
+.success,.error {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('/assets/messages/success.png');
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('/assets/messages/error.png');
 }
 
 .dropdown-content {

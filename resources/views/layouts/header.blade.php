@@ -19,8 +19,16 @@
                 </div>
             </li>
             <li><a href="/"><b>Compare</b></a></li>
+            @if (Auth::check())
+                <li class="navRight"><a href="/logout"><b>Logout</b></a></li>
+                @if ( Auth::user()->isAdmin )
+                    <li class="navRight"><a href="{{ url('/admin') }}"><b>Admin</b></a></li>
+                @endif
+            @else
+                <li class="navRight"><a href="{{ url('/login') }}"><b>Login</b></a></li>
+                <li class="navRight"><a href="{{ url('/register') }}"><b>Register</b></a></li>
+            @endif
             <li><a href="{{URL::route('about')}}"><b>About</b></a></li>
-
         </ul>
     </nav>
 @show
