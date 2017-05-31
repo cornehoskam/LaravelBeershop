@@ -43,7 +43,7 @@ class ProductController extends Controller
    }
 
    public function createOrUpdate(Request $request, $filename){
-       $required = array ('id','name','price', 'alcohol_contents','contents_ml','parent_category','description');
+       $required = array ('name','price', 'alcohol_contents','contents_ml','parent_category');
        $empty = array();
        $error = false;
 
