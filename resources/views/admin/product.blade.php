@@ -41,7 +41,7 @@
                 </select></li>
             <li><label>Subcategory</label> <select
                        name="parent_sub_category" class="field-select"@if(isset($product->parent_category))value="{{$product->parent_category}}"@endif>
-                    <option value="null">Select a sub category</option>
+                    <option value="">Select a sub category</option>
                     @foreach($sub_categories as $sub_category)
                         <option value="{{$sub_category->id}}" @if(isset($product->parent_sub_category) && $sub_category->id == $product->parent_sub_category) selected @endif>{{$sub_category->name}}</option>
                     @endforeach
