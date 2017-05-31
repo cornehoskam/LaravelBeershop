@@ -49,15 +49,11 @@ ul.categories li a:hover
     bottom: 0;
 }
 
-#header{
-    text-align: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    background-color: #f1f1f1;
+
+#homebody
+{
     border: 1px solid #ccc;
-    position: absolute;
-    width: 100%;
-    box-sizing: border-box;
+    background-color: #f1f1f1;
 }
 
 #header ul {
@@ -68,22 +64,25 @@ ul.categories li a:hover
     background-color: #f1f1f1;
 }
 
-#header li {
+li {
     float: left;
 }
 
-#header li a {
-    display: block;
+ li a, .dropbtn {
+    display: inline-block;
     color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-#header li a:hover {
+ li a:hover, .dropdown:hover .dropbtn {
     background-color: lightgrey;
 }
 
+ li.dropdown {
+    display: inline-block;
+}
 
 #homebody
 {
@@ -202,4 +201,32 @@ select{
     color: #D8000C;
     background-color: #FFBABA;
     background-image: url('/assets/messages/error.png');
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 0;
 }
