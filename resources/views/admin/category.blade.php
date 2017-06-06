@@ -10,6 +10,9 @@
 </head>
 <body>
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
+@if($errors->any())
+    <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
+@endif
 <h2>@if(isset($category->name)){{$category->name}} @else Add category @endif</h2>
     <form action="/admin/category" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -22,17 +25,25 @@
     </form>
            @if(($sub_categories->first()!== null))
             <form action="/admin/subcategory" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <ul class="styledForm">
                     <li><label>Sub Categories</label></li>
                         @foreach ($sub_categories as $sub_category)
                             <ul class="categories">
-                                 <li><a class="button" href="/admin/subcategor/delete/{{$sub_category->id}}">Delete</a><a>{{$sub_category->id}} <input type="text" name="delete[]" value="{{$sub_category->name}}"></a></li><br>
+                                 <li><a class="button" href="/admin/subcategories/delete/{{$sub_category->id}}">Delete</a><a>{{$sub_category->id}} <input type="text" name="name[{{$sub_category->id}}]" value="{{$sub_category->name}}"></a></li><br>
                             </ul>
                         @endforeach
                     <li><input type="submit" name="save" value="save" /></li>
+                    <li><a href="/admin/subcategory">
+                            <input type="button" value="Add Subcategory" />
+                        </a></li>
                 </ul>
             </form>
             @endif
+
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

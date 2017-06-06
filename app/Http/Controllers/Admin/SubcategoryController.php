@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\categorie;
-use App\product;
 use App\sub_categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 class SubcategoryController extends Controller
 {
    public function delete($id){
-       sub_categorie::where("id", "=", $id)->delete();
-       return CategoryController::showCategory($request->input('parent_id'))->withErrors(['success', 'Sub category is deleted']);;
+       $parent_id = sub_categorie::find($id)->parent_category;
+      sub_categorie::where("id", "=", $id)->delete();
+      return app('App\Http\Controllers\Admin\Categorycontroller')->showCategory($parent_id)->withErrors(['success', 'Sub category is deleted']);;
    }
 
    public function createOrUpdate(Request $request){
+
+       $names = $request->input('name');
+
        $required = array ('name');
        $empty = array();
        $error = false;
@@ -26,14 +28,16 @@ class SubcategoryController extends Controller
                }
             }
        if($error == true){
-           return CategoryController::showCategory($request->input('parent_id'))->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
+           return app('App\Http\Controllers\Admin\Categorycontroller')->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
        }
        else{
+           foreach($names as $name){
        $subcategory = sub_categorie::updateOrCreate(
-           ['id' => $request->input('id')],
-           ['name' => $request->input('name')]
-       );
-           return CategoryController::showCategory($request->input('parent_id'));
+           ['id' => array_search($name,$names)],
+           ['name' => $name]
+       );}
+           $parent_id = sub_categorie::find(array_search($name,$names))->parent_category;
+           return app('App\Http\Controllers\Admin\Categorycontroller')->showCategory($parent_id)->withErrors(['success', 'Sub category is edited']);
    }}
 }
 
