@@ -23,7 +23,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => 0.50,
                 'alcohol_contents' => 5,
                 'contents_ml' => 250,
-                'image_url' => 'jupiler.png'
+                'image_url' => 'product_1.png'
             ),
             array (
                 'id' => 2,
@@ -34,7 +34,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => 0.45,
                 'alcohol_contents' => 5,
                 'contents_ml' => 330,
-                'image_url' => 'brand.png'
+                'image_url' => 'product_2.png'
             ),
             array (
                 'id' => 3,
@@ -45,40 +45,40 @@ class ProductsTableSeeder extends Seeder
                 'price' => 0.40,
                 'alcohol_contents' => 5,
                 'contents_ml' => 330,
-                'image_url' => 'budweiser.png'
+                'image_url' => 'product_3.png'
             ),
             array (
                 'id' => 4,
                 'parent_category' => 2,
                 'parent_sub_category' => null,
-                'name' => "Alexander Keith's India Pale Ale",
+                'name' => "Alexander_Keiths_India_Pale_Ale",
                 'description' => 'Alexander Keith\'s',
                 'price' => 0.60,
                 'alcohol_contents' => 5,
                 'contents_ml' => 330,
-                'image_url' => 'keiths.png'
+                'image_url' => 'product_4.png'
             ),
             array (
                 'id' => 5,
                 'parent_category' => 3,
                 'parent_sub_category' => null,
-                'name' => "Erdinger Bock",
+                'name' => "Erdinger_Bock",
                 'description' => 'Privatebrewery since 1886',
                 'price' => 0.55,
                 'alcohol_contents' => 6,
                 'contents_ml' => 330,
-                'image_url' => 'erdinger.png'
+                'image_url' => 'product_5.png'
             ),
             array (
                 'id' => 6,
                 'parent_category' => 4,
                 'parent_sub_category' => null,
-                'name' => "Richard's Red",
-                'description' => 'The pride of nova scotia',
+                'name' => "Amstel",
+                'description' => 'Amstel',
                 'price' => 0.60,
                 'alcohol_contents' => 6,
                 'contents_ml' => 330,
-                'image_url' => 'richards.png'
+                'image_url' => 'product_6.png'
             ),
         );
 

@@ -9,15 +9,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('layouts.header', array('title'=>'Home'))
+@include('layouts.header', array('title'=>str_replace('_', ' ', $product['name'])))
+@if($subcat != null)
+    @include('layouts.breadcrumb', array('length'=>4, 'nameOne'=>$cat['name'], 'nameTwo'=>$subcat['name'], 'nameThree'=>str_replace('_', ' ', $product['name'])))
+@else
+    @include('layouts.breadcrumb', array('length'=>3, 'nameOne'=>$cat['name'], 'nameTwo'=>str_replace('_', ' ', $product['name'])))
+
+@endif
 <div class="container">
     <br>
-    <div id="homebody">
-        <h2>Want something different? Why not try</h2>
-        <h2> {{str_replace('_', ' ', $product['name']) }}</h2>
-        <h3><i> {{$product['description']}}</i></h3>
-        <img src="{{ URL::asset('assets/products/'.$product['image_url']) }}" width='200px' height='200px'><br><br>
-    </div>
+    <h1>{{ str_replace('_', ' ', $product['name']) }}</h1>
 </body>
 </div>
 @include('layouts.footer')

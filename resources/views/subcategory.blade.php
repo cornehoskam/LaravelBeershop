@@ -10,6 +10,8 @@
 </head>
 <body>
 @include('layouts.header', array('title'=>$cat['name']))
+@include('layouts.breadcrumb', array('length'=>3, 'nameOne'=>$parentcat['name'], 'nameTwo'=>$cat['name']))
+
 <div class="container">
     <br>
     <h1>{{$parentcat['name']}} - {{$cat['name']}}</h1>
@@ -19,7 +21,10 @@
             This subcategory does not have any products listed!
         @endif
         @foreach($products as $product)
-            {{$product->name}} <br>
+            @php
+            $route = "/Product/".$product['name'];
+            echo "<a href='".$route."'>".$product->name."</a><br>";
+            @endphp
         @endforeach
     </div>
 </body>

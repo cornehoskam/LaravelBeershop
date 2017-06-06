@@ -10,13 +10,15 @@
 </head>
 <body>
 @include('layouts.header', array('title'=>$cat['name']))
+@include('layouts.breadcrumb', array('length'=>2, 'nameOne'=>$cat['name']))
+
 <div class="container">
     <br>
     <h1>{{$cat['name']}}</h1>
     <div id="standardList">
         @foreach($subcat as $subcat)
             @php
-                $route = "/Category/".$cat['name']."/Subcategory/".$subcat->name;
+                $route = "/Category/".$cat['name']."/".$subcat->name;
                 echo "<a href='".$route."'>".$subcat->name." </a>";
             @endphp
         @endforeach
@@ -25,7 +27,10 @@
             This category does not have any products listed!
         @endif
         @foreach($products as $product)
-            {{$product->name}} <br>
+            @php
+                $route = "/Product/".$product['name'];
+                    echo "<a href='".$route."'>".str_replace('_', ' ', $product['name'])."</a><br>";
+            @endphp
         @endforeach
     </div>
 </body>

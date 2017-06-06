@@ -19,7 +19,10 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 //Category Routes
 Route::get('Category/{catname}', ['uses' =>  'CategoryController@getCategoryPage']);
-Route::get('Category/{catname}/Subcategory/{subcatname}', ['uses' =>  'SubcategoryController@getCategoryPage']);
+Route::get('Category/{catname}/{subcatname}', ['uses' =>  'SubcategoryController@getCategoryPage']);
+
+//Product Routes
+Route::get('Product/{productname}', ['uses' =>  'ProductController@getProductPage']);
 
 //About Routes
 Route::get('about', array('as' => 'about', function () {

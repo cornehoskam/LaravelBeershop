@@ -231,3 +231,29 @@ h1{
     margin-top: 0;
     margin-bottom: 0;
 }
+
+ul.breadcrumb {
+    padding: 0 0;
+    list-style: none;
+    background-color: #eee;
+    font-size: 17px;
+    margin: 2px 0 0 0;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 0px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    text-decoration: none;
+}
+
