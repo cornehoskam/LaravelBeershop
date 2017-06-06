@@ -9,16 +9,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('layouts.header', array('title'=>$product['name']))
+@include('layouts.header', array('title'=>str_replace('_', ' ', $product['name'])))
 @if($subcat != null)
-    @include('layouts.breadcrumb', array('length'=>4, 'nameOne'=>$cat['name'], 'nameTwo'=>$subcat['name'], 'nameThree'=>$product['name']))
+    @include('layouts.breadcrumb', array('length'=>4, 'nameOne'=>$cat['name'], 'nameTwo'=>$subcat['name'], 'nameThree'=>str_replace('_', ' ', $product['name'])))
 @else
-    @include('layouts.breadcrumb', array('length'=>3, 'nameOne'=>$cat['name'], 'nameTwo'=>$product['name']))
+    @include('layouts.breadcrumb', array('length'=>3, 'nameOne'=>$cat['name'], 'nameTwo'=>str_replace('_', ' ', $product['name'])))
 
 @endif
 <div class="container">
     <br>
-    <h1>{{ $product['name'] }}</h1>
+    <h1>{{ str_replace('_', ' ', $product['name']) }}</h1>
 </body>
 </div>
 @include('layouts.footer')

@@ -29,7 +29,7 @@
         @foreach($products as $product)
             @php
                 $route = "/Product/".$product['name'];
-                    echo "<a href='".$route."'>".$product->name."</a><br>";
+                    echo "<a href='".$route."'>".str_replace('_', ' ', $product['name'])."</a><br>";
             @endphp
         @endforeach
     </div>

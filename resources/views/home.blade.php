@@ -14,7 +14,7 @@
     <br>
     <div id="homebody">
         <h2>Want something different? Why not try</h2>
-        <h2> {{$product['name'] }}</h2>
+        <h2> {{str_replace('_', ' ', $product['name']) }}</h2>
         <h3><i> {{$product['description']}}</i></h3>
         <img src="{{ URL::asset('assets/products/'.$product['image_url']) }}" width='200px' height='200px'><br><br>
     </div>
