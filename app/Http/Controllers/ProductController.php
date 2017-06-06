@@ -14,5 +14,9 @@ class ProductController extends Controller
         {
             return view('product', compact('product'));
         }
+        else
+        {
+            return view('errors.404');
+        }
     }
 }
