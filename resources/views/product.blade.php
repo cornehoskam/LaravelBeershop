@@ -11,7 +11,8 @@
 <body>
 @include('layouts.header', array('title'=>$product['name']))
 <div class="container">
-
+    <br>
+    <h1>{{ $product['name'] }}</h1>
 </body>
 </div>
 @include('layouts.footer')
