@@ -11,7 +11,6 @@
 <body>
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
 <div class="container">
-
     @if($errors->any())
         <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
     @endif

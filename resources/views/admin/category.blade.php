@@ -21,15 +21,15 @@
         </ul>
     </form>
            @if(($sub_categories->first()!== null))
-            <form action="/admin/product" method="POST" enctype="multipart/form-data">
+            <form action="/admin/subcategory" method="POST" enctype="multipart/form-data">
                 <ul class="styledForm">
                     <li><label>Sub Categories</label></li>
                         @foreach ($sub_categories as $sub_category)
                             <ul class="categories">
-                                 <li><input type="checkbox" name="delete[]" value="{{$sub_category->id}}"><a href="/admin/category/{{$sub_category->id}}">{{$sub_category->id}} {{$sub_category->name}}</a></li><br>
+                                 <li><a class="button" href="/admin/subcategor/delete/{{$sub_category->id}}">Delete</a><a>{{$sub_category->id}} <input type="text" name="delete[]" value="{{$sub_category->name}}"></a></li><br>
                             </ul>
                         @endforeach
-                    <li><input type="submit" name="save" value="Save" /></li>
+                    <li><input type="submit" name="save" value="save" /></li>
                 </ul>
             </form>
             @endif

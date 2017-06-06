@@ -50,4 +50,9 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::get('/admin/category/{id?}', 'Admin\CategoryController@showCategory');
     Route::post('/admin/category', 'Admin\CategoryController@createOrUpdate');
 
+    //subcategories
+    Route::get('/admin/subcategories', 'Admin\SubcategoryController@index');
+    Route::post('/admin/subcategories/delete/{id}', 'Admin\SubcategoryController@delete');
+    Route::post('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
+
 });
