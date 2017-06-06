@@ -10,6 +10,8 @@
 </head>
 <body>
 @include('layouts.header', array('title'=>$cat['name']))
+@include('layouts.breadcrumb', array('length'=>2, 'nameOne'=>$cat['name']))
+
 <div class="container">
     <br>
     <h1>{{$cat['name']}}</h1>

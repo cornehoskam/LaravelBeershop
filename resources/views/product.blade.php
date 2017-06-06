@@ -10,6 +10,12 @@
 </head>
 <body>
 @include('layouts.header', array('title'=>$product['name']))
+@if($subcat != null)
+    @include('layouts.breadcrumb', array('length'=>4, 'nameOne'=>$cat['name'], 'nameTwo'=>$subcat['name'], 'nameThree'=>$product['name']))
+@else
+    @include('layouts.breadcrumb', array('length'=>3, 'nameOne'=>$cat['name'], 'nameTwo'=>$product['name']))
+
+@endif
 <div class="container">
     <br>
     <h1>{{ $product['name'] }}</h1>
