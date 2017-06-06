@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
         {
             $table->increments('id')->unique();
             $table->integer('parent_category')->unsigned()->nullable();
-            $table->foreign('parent_category')->references('id')->on('categories')->onDelete('cascade');;
+            $table->foreign('parent_category')->references('id')->on('categories')->onDelete('set null');;
             $table->integer('parent_sub_category')->unsigned()->nullable();
-            $table->foreign('parent_sub_category')->references('id')->on('sub_categories')->onDelete('cascade');;
+            $table->foreign('parent_sub_category')->references('id')->on('sub_categories')->onDelete('set null');;
             $table->string('name')->unique();
             $table->longText('description');
             $table->double('price');
