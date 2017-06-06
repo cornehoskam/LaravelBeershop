@@ -20,14 +20,6 @@ class CategoryController extends Controller
        if ($request->has('delete')) {
            $ids = $request->input('delete');
            foreach($ids as $id) {
-              $products = product::where("parent_category", "=", $id)->get();
-              $subcats = sub_categorie::where("parent_category", "=", $id)->get();
-              foreach($products as $product){
-                  $product->parent_category = null;
-               }
-               foreach($subcats as $subcat){
-                   $subcat->parent_category = null;
-               }
                categorie::where("id", "=", $id)->delete();
            }
        }
