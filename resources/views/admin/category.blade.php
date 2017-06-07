@@ -23,10 +23,11 @@
             <li><input type="submit" name="save" value="Save" /></li>
         </ul>
     </form>
-           @if(($sub_categories->first()!== null))
+
             <form action="/admin/subcategory" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <ul class="styledForm">
+                    @if(($sub_categories->first()!== null))
                     <li><label>Sub Categories</label></li>
                         @foreach ($sub_categories as $sub_category)
                             <ul class="categories">
@@ -34,12 +35,13 @@
                             </ul>
                         @endforeach
                     <li><input type="submit" name="save" value="save" /></li>
+                    @endif
                     <li><a href="/admin/subcategory/add/{{$category->id}}">
                             <input type="button" value="Add Subcategory" />
                         </a></li>
                 </ul>
             </form>
-            @endif
+
 
 <br>
 <br>
