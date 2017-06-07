@@ -34,7 +34,7 @@
                             </ul>
                         @endforeach
                     <li><input type="submit" name="save" value="save" /></li>
-                    <li><a href="/admin/subcategory">
+                    <li><a href="/admin/subcategory/add/{{$category->id}}">
                             <input type="button" value="Add Subcategory" />
                         </a></li>
                 </ul>
