@@ -44,7 +44,7 @@ class CategoryController extends Controller
                }
             }
        if($error == true){
-           return CategoryController::showCategory(null)->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
+           return CategoryController::showCategory( $request->input('id'))->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
        }
        else{
        $category = categorie::updateOrCreate(

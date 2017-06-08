@@ -20,7 +20,6 @@ class SubcategoryController extends Controller
     }
 
     public function createOrUpdate(Request $request){
-
         $names = $request->input('name');
 
         $required = array ('name');
@@ -28,13 +27,22 @@ class SubcategoryController extends Controller
         $error = false;
 
         foreach ( $required as $field ) {
+            if(is_array($request->input($field))){
+                foreach($request->input($field) as $singleField){
+                    if(empty($singleField)){
+                        array_push($empty,$field);
+                        $error = true;
+                    }
+                }
+            }
+            else{
             if (empty ( $request->input($field) )) {
                 array_push($empty,$field);
                 $error = true;
-            }
+            }}
         }
         if($error == true){
-            return app('App\Http\Controllers\Admin\Categorycontroller')->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
+            return back()->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
         }
         else{
             if(is_array($names)) {
@@ -52,7 +60,7 @@ class SubcategoryController extends Controller
                 $subcategory->name = $names;
                 $subcategory->parent_category = $request->input('parent_id');
                 $subcategory->save();
-                return app('App\Http\Controllers\Admin\Categorycontroller')->showCategory($request->input('parent_id'))->withErrors(['success', 'Sub category is edited']);
+                return app('App\Http\Controllers\Admin\Categorycontroller')->showCategory($request->input('parent_id'))->withErrors(['success', 'Sub category is added']);
             }
         }}
 }

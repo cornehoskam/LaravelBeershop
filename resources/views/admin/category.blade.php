@@ -23,7 +23,7 @@
             <li><input type="submit" name="save" value="Save" /></li>
         </ul>
     </form>
-
+@if($category !== null)
             <form action="/admin/subcategory" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <ul class="styledForm">
@@ -41,7 +41,7 @@
                         </a></li>
                 </ul>
             </form>
-
+@endif
 
 <br>
 <br>
