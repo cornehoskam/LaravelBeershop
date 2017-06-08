@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 
 //Authentication Routes
@@ -43,5 +44,18 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::post('/admin/products/delete', 'Admin\ProductController@delete');
     Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
     Route::post('/admin/product', 'FileController@upload');
+
+    //categories
+    Route::get('/admin/categories', 'Admin\CategoryController@index');
+    Route::post('/admin/categories/delete', 'Admin\CategoryController@delete');
+    Route::get('/admin/category/{id?}', 'Admin\CategoryController@showCategory');
+    Route::post('/admin/category', 'Admin\CategoryController@createOrUpdate');
+
+    //subcategories
+    Route::get('/admin/subcategories', 'Admin\SubcategoryController@index');
+    Route::get('/admin/subcategories/delete/{id}', 'Admin\SubcategoryController@delete');
+    Route::post('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
+    Route::get('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
+    Route::get('/admin/subcategory/add/{id}', 'Admin\SubcategoryController@showSubCategory');
 
 });
