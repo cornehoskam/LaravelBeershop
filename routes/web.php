@@ -44,4 +44,6 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
     Route::post('/admin/product', 'FileController@upload');
 
+    //users
+    Route::get('/admin/users', 'Admin\UserController@index');
 });

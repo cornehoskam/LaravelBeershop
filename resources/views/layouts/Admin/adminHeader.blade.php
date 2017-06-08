@@ -6,7 +6,7 @@
             <li><img src="{{ URL::asset('assets/header.png') }}" width="250px" height="40px"></li>
             <li><a href="/admin/products"><b>Products</b></a></li>
             <li><a href="/"><b>Categories</b></a></li>
-            <li><a href="/"><b>Users</b></a></li>
+            <li><a href="/admin/users"><b>Users</b></a></li>
             <li><a href="/"><b>Orders</b></a></li>
             <li class="navRight"><a href="/logout"><b>Logout</a></li>
             <li class="navRight"><a href="{{ url('/') }}"><b>Home</b></a></li>
