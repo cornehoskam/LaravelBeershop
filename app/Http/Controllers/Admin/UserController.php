@@ -16,6 +16,16 @@ class UserController extends Controller
         return view('admin/users', compact('users'));
     }
 
+    public function delete(Request $request){
+
+        if ($request->has('delete')) {
+            $ids = $request->input('delete');
+            foreach($ids as $id) {
+                User::where("id", "=", $id)->delete();
+            }
+        }
+        return UserController::index()->withErrors(['success', 'User is deleted']);;
+    }
 
       public function createOrUpdate(Request $request, $filename){
 

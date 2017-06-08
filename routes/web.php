@@ -44,9 +44,10 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::post('/admin/products/delete', 'Admin\ProductController@delete');
     Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
     Route::post('/admin/product', 'FileController@upload');
-    
+
     //users
     Route::get('/admin/users', 'Admin\UserController@index');
+    Route::post('/admin/users/delete', 'Admin\UserController@delete');
 
     //categories
     Route::get('/admin/categories', 'Admin\CategoryController@index');
