@@ -10,11 +10,10 @@
 </head>
 <body>
 @include('layouts.admin.adminHeader', array('title'=>'Home'))
-<br>
-<br>
-<br>
-<br><br>
-<h2>@if(isset($product->name)){{$product->name}} @else Add product" @endif</h2>
+@if($errors->any())
+    <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
+@endif
+<h2>@if(isset($product->name)){{$product->name}} @else Add product @endif</h2>
     <form action="/admin/product" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <ul class="styledForm">

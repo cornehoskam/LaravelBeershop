@@ -27,7 +27,7 @@ class ProductController extends Controller
                product::where("id", "=", $id)->delete();
            }
        }
-       return ProductController::index();
+       return ProductController::index()->withErrors(['success', 'Product is deleted']);
    }
 
    public function showProduct($id=null, Request $request=null){
@@ -56,8 +56,9 @@ class ProductController extends Controller
                }
             }
        if($error == true){
+           var_dump($empty);
            $request->merge(array('image_url' => $filename));
-           return ProductController::showProduct(null,$request,"One or more required fields were left empty: ". join(', ', $empty));
+           return ProductController::showProduct(null,$request)->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
        }
        else{
        $product = product::updateOrCreate(
@@ -71,6 +72,11 @@ class ProductController extends Controller
                'description' => $request->input('description'),
                'image_url' => $filename]
        );
+       if($request->input('id') == 0){
+           $extension = explode(".", $product->image_url);
+           $product->image_url = "product_".$product->id.".".$extension[1];
+           $product->save();
+       }
            return ProductController::index();
    }}
 }

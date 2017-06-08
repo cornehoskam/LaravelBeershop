@@ -12,7 +12,7 @@
 @include('layouts.header', array('title'=>'Home'))
 <div class="container">
     <br>
-    <form role="form" method="POST" action="{{ route('login') }}">
+    <form role="form" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
         <ul class="styledForm">
             <li>
