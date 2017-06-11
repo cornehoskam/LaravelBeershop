@@ -30,7 +30,10 @@ Route::get('about', array('as' => 'about', function () {
     return view('about');
 }));
 
-Route::post('search', ['as' => 'search', 'uses' => 'SearchController@searchProduct']);
+Route::get('Compare', ['as' => 'compare', 'uses' => 'CompareController@getOptionsPage']);
+Route::post('Compare/Details', ['as' => 'compareDetails', 'uses' => 'CompareController@getDetails']);
+
+Route::post('Search', ['as' => 'search', 'uses' => 'SearchController@searchProduct']);
 
 Auth::routes();
 

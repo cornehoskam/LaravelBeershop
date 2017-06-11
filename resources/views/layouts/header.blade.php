@@ -18,7 +18,7 @@
                     @endforeach
                 </div>
             </li>
-            <li><a href="/"><b>Compare</b></a></li>
+            <li><a href="{{URL::route('compare')}}"><b>Compare</b></a></li>
             @if (Auth::check())
                 <li class="navRight"><a href="/logout"><b>Logout</b></a></li>
                 @if ( Auth::user()->isAdmin )

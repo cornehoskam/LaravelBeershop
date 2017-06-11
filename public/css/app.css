@@ -324,3 +324,33 @@ ul.breadcrumb li a {
     text-decoration: none;
 }
 
+#compareBlockOne
+{
+    background-color: #f1f1f1;
+    float: left;
+    outline-style: solid;
+    display: inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+#compareBlockTwo
+{
+    background-color: #f1f1f1;
+    float: left;
+    outline-style: solid;
+    display: inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 20px;
+}
+
+#wrapperCompare
+{
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
