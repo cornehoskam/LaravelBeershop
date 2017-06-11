@@ -30,5 +30,14 @@
             @endif
             <li><a href="{{URL::route('about')}}"><b>About</b></a></li>
         </ul>
+        <br>
+        <div id="searchbar">
+            {{ Form::open(['route' => 'search', 'id' => 'form']) }}
+                <input  type="text" name="query" size="55">
+                <input  type="submit" name="submit" value="Search">
+            {{Form::close()}}
+
+        </div>
+        <br>
     </nav>
 @show

@@ -30,6 +30,7 @@ Route::get('about', array('as' => 'about', function () {
     return view('about');
 }));
 
+Route::post('search', ['as' => 'search', 'uses' => 'SearchController@searchProduct']);
 
 Auth::routes();
 
