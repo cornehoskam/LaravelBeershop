@@ -32,10 +32,10 @@
                        onclick="openTab(event, 'Reviews')">Reviews</a></li>
             </ul>
             <div id="Product" class="tabcontent">
-                <h3>{{$product->name}}</h3><p>  &euro; {{$product->price}}</p><p> {{$product->alcohol_contents}}% VOL.</p><p> {{$product->contents_ml}} mL.</p>			</div>
+                <h3>{{str_replace('_', ' ', $product->name)}}</h3><p>  &euro; {{$product->price}}</p><p> {{$product->alcohol_contents}}% VOL.</p><p> {{$product->contents_ml}} mL.</p>			</div>
 
             <div id="Information" class="tabcontent">
-                <h3>{{$product->name}}</h3><p>{{$product->description}}</p>			</div>
+                <h3>{{str_replace('_', ' ', $product->name)}}</h3><p>{{$product->description}}</p>			</div>
 
             <div id="Reviews" class="tabcontent">
                 <h3>Reviews</h3>
