@@ -51,7 +51,7 @@ class ProductsTableSeeder extends Seeder
                 'id' => 4,
                 'parent_category' => 2,
                 'parent_sub_category' => null,
-                'name' => "Alexander_Keiths_India_Pale_Ale",
+                'name' => "Keith's",
                 'description' => 'Alexander Keith\'s',
                 'price' => 0.60,
                 'alcohol_contents' => 5,

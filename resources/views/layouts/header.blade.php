@@ -18,7 +18,7 @@
                     @endforeach
                 </div>
             </li>
-            <li><a href="/"><b>Compare</b></a></li>
+            <li><a href="{{URL::route('compare')}}"><b>Compare</b></a></li>
             @if (Auth::check())
                 <li class="navRight"><a href="/logout"><b>Logout</b></a></li>
                 @if ( Auth::user()->isAdmin )
@@ -30,5 +30,14 @@
             @endif
             <li><a href="{{URL::route('about')}}"><b>About</b></a></li>
         </ul>
+        <br>
+        <div id="searchbar">
+            {{ Form::open(['route' => 'search', 'id' => 'form']) }}
+                <input  type="text" name="query" size="55">
+                <input  type="submit" name="submit" value="Search">
+            {{Form::close()}}
+
+        </div>
+        <br>
     </nav>
 @show
