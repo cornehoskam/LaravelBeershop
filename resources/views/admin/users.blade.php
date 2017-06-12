@@ -20,7 +20,7 @@
         {{ csrf_field() }}
         <ul class="categories">
             @foreach ($users as $user)
-                <li><input type="checkbox" name="delete[]" value="{{$user->id}}">{{$user->id}}. {{$user->name}} - {{$user->isAdmin ? 'Admin' : 'No'}} permissions</li><br>
+                <li><input type="checkbox" name="delete[]" value="{{$user->id}}">{{$user->id}}. {{$user->name}} - {{$user->isAdmin ? 'Admin' : 'No'}} permissions <a class="button" href="/admin/users/{{$user->id}}">{{$user->isAdmin ? 'Take' : 'Give'}} rights</a></li><br>
             @endforeach
         </ul>
         <button type="submit">Delete</button>

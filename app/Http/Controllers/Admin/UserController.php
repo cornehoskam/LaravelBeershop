@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\categorie;
-use App\sub_categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -27,13 +25,13 @@ class UserController extends Controller
         return UserController::index()->withErrors(['success', 'User is deleted']);;
     }
 
-      public function createOrUpdate(Request $request, $filename){
+      public function changeRights($id){
 
-       $product = product::updateOrCreate(
-           ['id' => $request->input('id')],
-           ['isAdmin' => $request->input('name')]
-       );
-           return UserController::index()->withErrors(["succes","User is saved"]);
+       $user = User::find($id);
+          $user->isAdmin = !$user->isAdmin;
+          $user->save();
+           return UserController::index()->withErrors(['success', 'User is saved']);
    }
+
 }
 

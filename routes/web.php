@@ -47,6 +47,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
 
     //users
     Route::get('/admin/users', 'Admin\UserController@index');
+    Route::get('/admin/users/{id}', 'Admin\UserController@changeRights');
     Route::post('/admin/users/delete', 'Admin\UserController@delete');
 
     //categories
