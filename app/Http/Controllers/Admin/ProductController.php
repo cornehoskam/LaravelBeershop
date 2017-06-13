@@ -61,9 +61,10 @@ class ProductController extends Controller
            return ProductController::showProduct(null,$request)->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
        }
        else{
+           $newName = str_replace(" ", "_", $request->input('name'));
        $product = product::updateOrCreate(
            ['id' => $request->input('id')],
-           ['name' => $request->input('name'),
+           ['name' => $newName,
                'price' => $request->input('price'),
                'alcohol_contents' => $request->input('alcohol_contents'),
                'contents_ml' => $request->input('contents_ml'),
