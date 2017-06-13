@@ -42,6 +42,15 @@
                 <p>Coming soon</p>
             </div>
         </div>
+        @if (Illuminate\Support\Facades\Auth::check())
+        <form method="post" action=/ProductDetails.php?productid=3>
+            <ul class="styledForm">
+                <li><label>Amount</label> <input
+                            type="number" name="amount" class="field-number"  min="0" /></li>
+                <li><input type="submit" value="Add to cart" name="buy" /></li>
+            </ul>
+        </form>
+        @endif
 </body>
 </div>
 @include('layouts.footer')
