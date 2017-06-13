@@ -20,7 +20,7 @@
             </li>
             <li><a href="{{URL::route('compare')}}"><b>Compare</b></a></li>
             @if (Auth::check())
-                <li class="navRight"><a href="/"><img src='assets/cart.png' width='20px' height='20px' alt='Cart'></a></li>
+                <li class="navRight"><a href="/cart"><img src='assets/cart.png' width='20px' height='20px' alt='Cart'></a></li>
                 <li class="navRight"><a href="/logout"><b>Logout</b></a></li>
                 @if ( Auth::user()->isAdmin )
                     <li class="navRight"><a href="{{ url('/admin') }}"><b>Admin</b></a></li>
