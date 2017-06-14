@@ -47,15 +47,17 @@ class SubcategoryController extends Controller
         else{
             if(is_array($names)) {
                 foreach ($names as $name) {
+                    $newName = str_replace(" ", "_", $name);
                     $subcategory = sub_categorie::updateOrCreate(
                         ['id' => array_search($name, $names)],
-                        ['name' => $name]
+                        ['name' => $newName]
                     );
                 }
                 $parent_id = sub_categorie::find(array_search($name, $names))->parent_category;
                 return app('App\Http\Controllers\Admin\Categorycontroller')->showCategory($parent_id)->withErrors(['success', 'Sub category is edited']);
             }
             else{
+                $name = str_replace(" ", "_", $names);
                 $subcategory = new sub_categorie();
                 $subcategory->name = $names;
                 $subcategory->parent_category = $request->input('parent_id');

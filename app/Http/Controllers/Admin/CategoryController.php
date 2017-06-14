@@ -47,9 +47,10 @@ class CategoryController extends Controller
            return CategoryController::showCategory( $request->input('id'))->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
        }
        else{
+           $newName = str_replace(" ", "_", $request->input('name'));
        $category = categorie::updateOrCreate(
            ['id' => $request->input('id')],
-           ['name' => $request->input('name')]
+           ['name' =>$newName]
        );
            return CategoryController::index();
    }}
