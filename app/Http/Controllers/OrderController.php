@@ -44,9 +44,11 @@ class OrderController extends Controller
             $alreadyExists = order::where('order_id', $order_id)->exists();
         }
         foreach($cart as $cartItem){
+            $item = cart::find($cartItem)->first();
             $order = new order;
             $order->user_id = Auth::user()->id;
-            $order->cart_id = $cartItem;
+            $order->product_id = $item->product_id;
+            $order->product_amount = $item->amount;
             $order->order_id = $order_id;
             $order->status = "Waiting for Payment";
             $order->save();
