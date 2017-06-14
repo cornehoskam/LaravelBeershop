@@ -21,6 +21,12 @@ class CartController extends Controller
         return view('cart', compact('cart'));
     }
 
+    public function delete($ids){
+            foreach($ids as $id) {
+                cart::where("id", "=", $id)->delete();
+            }
+    }
+
     public function addToCart(Request $request){
         $user = Auth::user()->id;
         $product =  $request->input('product_id');

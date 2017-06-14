@@ -9,23 +9,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('layouts.header', array('title'=>"Cart"))
+@include('layouts.header', array('title'=>"Place Order"))
 <div class="container">
-    <h1>Cart</h1>
-    @if(!$cart->First())
-        <p>Your cart is empty, start shopping now!</p>
-    @else
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>price</th>
-                <th>Total</th>
-            </tr>
-            <?php $priceSum = 0 ?>
-            @foreach($cart as $cartItem)
-                <?php $totalPrice = $cartItem->amount*$cartItem->product->price; $roundedPrice = number_format($totalPrice,2); $priceSum += $roundedPrice;?>
+    <h1>Place Order</h1>
+    <p>Please confirm that all the information below is correct:</p>
+
+    <h4>User Information</h4>
+    <p><b>Name: </b>{{$user->firstName." ".$user->lastName}}</p>
+    <p><b>Address: </b>{{$user->address.", ".$user->postalCode." ".$user->city}}</p>
+    <br>
+    <h4>Order</h4>
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>price</th>
+            <th>Total</th>
+        </tr>
+        <?php $priceSum = 0 ?>
+        @foreach($cart as $cartItem)
+            <?php $totalPrice = $cartItem->amount*$cartItem->product->price; $roundedPrice = number_format($totalPrice,2); $priceSum += $roundedPrice;?>
             <tr>
                 <td><img src='{{ URL::asset('assets/products/'.$cartItem->product->image_url) }}' width='50px' height='50px'></td><td>{{str_replace("_"," ",$cartItem->product->name)}}</td><td>{{$cartItem->amount}}</td><td> &euro;{{number_format($cartItem->product->price,2)}}</td>
                 <td> &euro;{{$roundedPrice}}</td>       <td>
@@ -36,16 +40,14 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
-            <td> &nbsp; </td>
-            <td> &nbsp; </td>
-            <td> &nbsp; </td>
-            <td> &nbsp; </td>
-            <td> &euro;{{number_format($priceSum,2)}}</td>
-        </table>
-
-        <a class="button" href="/order/details">Place Order</a>
-    @endif
+        @endforeach
+        <td> &nbsp; </td>
+        <td> &nbsp; </td>
+        <td> &nbsp; </td>
+        <td> &nbsp; </td>
+        <td> &euro;{{number_format($priceSum,2)}}</td>
+    </table>
+    <a class="button" href="/order/payment">To Payment</a>
 </div>
 </body>
 </div>
