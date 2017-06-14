@@ -34,7 +34,22 @@ class CartController extends Controller
                         ->where('user_id', $user)
                         ->first();
         $amount = $request->input('amount');
-        if($oldItem != null)
+        if ($request->has('delete')) {
+            CartController::delete(array($oldItem->id));
+            return CartController::index();
+        }
+        else if ($request->has('remove')) {
+            if($oldItem->amount > 1){
+            $amount = $oldItem->amount -1;}
+            else{
+                CartController::delete(array($oldItem->id));
+                return CartController::index();
+            }
+        }
+        else if ($request->has('add')) {
+            $amount = $oldItem->amount +1;
+        }
+        else if($oldItem != null)
         {
             $amount += $oldItem->amount;
         }

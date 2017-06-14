@@ -26,7 +26,7 @@
                 <ul class="styledForm">
                     <input type="hidden" name="product_id" value="{{$product->id}}"/>
                     <li><label>Amount</label> <input
-                                type="number" name="amount" class="field-number"  min="0" /></li>
+                                type="number" name="amount" class="field-number"  min="1" /></li>
                     <li><input type="submit" value="Add to cart" name="buy" /></li>
                 </ul>
             </form>

@@ -29,7 +29,9 @@
             <tr>
                 <td><img src='{{ URL::asset('assets/products/'.$cartItem->product->image_url) }}' width='50px' height='50px'></td><td>{{str_replace("_"," ",$cartItem->product->name)}}</td><td>{{$cartItem->amount}}</td><td> &euro;{{number_format($cartItem->product->price,2)}}</td>
                 <td> &euro;{{$roundedPrice}}</td>       <td>
-                    <form method="post" action=ShoppingCart.php?productid=5 class="styledForm">
+                    <form method="post" action='/cart' class="styledForm">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="product_id" value="{{$cartItem->product->id}}">
                         <li><input type="submit" value="X" name="delete" class="cartButton"/></li>
                         <li><input type="submit" value="-" name="remove" class="cartButton"/></li>
                         <li><input type="submit" value="+" name="add" class="cartButton"/></li>
