@@ -30,23 +30,26 @@ class OrderController extends Controller
     public function payment(){
         $user = User::find(Auth::user()->id) ;
         $cart = cart::where('user_id', $user->id)->pluck('id')->toArray();
+        OrderController::create($cart);
         app('App\Http\Controllers\CartController')->delete($cart);
-
         return view('paymentPage');
     }
 
-    public function createOrUpdate()
+    public function create($cart)
     {
-        $order = order::updateOrCreate(
-//            ['id' => $request->input('id')],
-//            ['name' => $request->input('name'),
-//                'price' => $request->input('price'),
-//                'alcohol_contents' => $request->input('alcohol_contents'),
-//                'contents_ml' => $request->input('contents_ml'),
-//                'parent_category' => $request->input('parent_category'),
-//                'parent_sub_category' => $request->input('parent_sub_category'),
-//                'description' => $request->input('description'),
-//                'image_url' => $filename]
-        );
+        $alreadyExists = true;
+        while($alreadyExists){
+            $order_id = rand(0,10000);
+
+            $alreadyExists = order::where('order_id', $order_id)->exists();
+        }
+        foreach($cart as $cartItem){
+            $order = new order;
+            $order->user_id = Auth::user()->id;
+            $order->cart_id = $cartItem;
+            $order->order_id = $order_id;
+            $order->status = "Waiting for Payment";
+            $order->save();
+        }
     }
 }
