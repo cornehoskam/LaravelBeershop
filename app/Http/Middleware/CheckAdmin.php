@@ -20,8 +20,14 @@ class CheckAdmin
             if ($request->user()->isAdmin == 0) {
                 return redirect('/');
             }
+            else
+            {
+                return $next($request);
+            }
         }
-
-        return $next($request);
+        else
+        {
+            return redirect('/');
+        }
     }
 }
