@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\product;
 use App\Http\Controllers\FileController;
 use File;
+use Storage;
 class ProductController extends Controller
 {
     public function index()
@@ -45,7 +46,7 @@ class ProductController extends Controller
    }
 
    public function createOrUpdate(Request $request, $filename){
-       $required = array ('name','price', 'alcohol_contents','contents_ml','parent_category', 'image_url');
+       $required = array ('name','price', 'alcohol_contents','contents_ml','parent_category', 'description');
        $empty = array();
        $error = false;
 
@@ -62,9 +63,8 @@ class ProductController extends Controller
        else{
            $newName = str_replace(" ", "_", $request->input('name'));
        $product = product::updateOrCreate(
-           ['id' => $request->input('id')],
-           ['name' => $newName,
-               'price' => $request->input('price'),
+           ['name' => $newName],
+           [   'price' => $request->input('price'),
                'alcohol_contents' => $request->input('alcohol_contents'),
                'contents_ml' => $request->input('contents_ml'),
                'parent_category' => $request->input('parent_category'),
@@ -76,6 +76,7 @@ class ProductController extends Controller
            $extension = explode(".", $product->image_url);
            $product->image_url = "product_".$product->id.".".$extension[1];
            $product->save();
+           File::move(public_path().'/assets/products/product_0.'.$extension[1], public_path().'/assets/products/product_'.$product->id.'.'.$extension[1]);
        }
            return ProductController::index();
    }}

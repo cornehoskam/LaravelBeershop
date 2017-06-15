@@ -32,7 +32,7 @@ class FileController extends Controller {
                     File::delete($destinationPath.$fileName);
                     Input::file('image_url')->move($destinationPath, $fileName); // uploading file to given path
                     // sending back with message
-                   return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName)->withErrors(['success', 'Product is saved']);
+                   return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $fileName);
                 } else {
                     // sending back with error message.
                     return app('App\Http\Controllers\Admin\ProductController')->index()->withErrors(['error', 'uploaded file is not valid']);
@@ -40,7 +40,7 @@ class FileController extends Controller {
             }
         }
         else{
-           return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, Input::get('image_default'));
+            return Redirect::back()->withErrors(['error', 'No image file was provided']);
         }
     }
 }
