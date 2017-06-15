@@ -36,6 +36,11 @@ class CategoryController extends Controller
        $required = array ('name');
        $empty = array();
        $error = false;
+       $alreadyExists = categorie::where('name', $request->input('name'))->first();
+       if(!empty($alreadyExists))
+       {
+           return back()->withErrors(['error', "This category already exists!"]);
+       }
 
        foreach ( $required as $field ) {
             if (empty ( $request->input($field) )) {

@@ -31,7 +31,7 @@
                     <li><label>Sub Categories</label></li>
                         @foreach ($sub_categories as $sub_category)
                             <ul class="categories">
-                                 <li><a class="button" href="/admin/subcategories/delete/{{$sub_category->id}}">Delete</a><a>{{$sub_category->id}} <input type="text" pattern="[A-Za-z ]{1,25}" name="name[{{$sub_category->id}}]" value="{{str_replace('_', ' ', $sub_category->name)}}"></a></li><br>
+                                 <li>&nbsp;&nbsp;<a class="button" href="/admin/subcategories/delete/{{$sub_category->id}}">Delete</a><a><input type="text" pattern="[A-Za-z ]{1,25}" name="name[{{$sub_category->id}}]" value="{{str_replace('_', ' ', $sub_category->name)}}"></a> {{$sub_category->id}} </li><br>
                             </ul>
                         @endforeach
                     <li><input type="submit" name="save" value="save" /></li>

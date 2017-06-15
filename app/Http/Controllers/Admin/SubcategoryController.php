@@ -21,7 +21,12 @@ class SubcategoryController extends Controller
 
     public function createOrUpdate(Request $request){
         $names = $request->input('name');
+        $alreadyExists = sub_categorie::where('name', $names)->first();
+        if(!empty($alreadyExists))
+        {
+            return back()->withErrors(['error', "This subcategory already exists!"]);
 
+        }
         $required = array ('name');
         $empty = array();
         $error = false;
