@@ -13,7 +13,7 @@
 @if($errors->any())
     <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
 @endif
-<h2>@if(isset($product->name)){{$product->name}} @else Add product @endif</h2>
+<h2>@if(isset($product->name)){{str_replace('_', ' ', $product['name'])}} @else Add product @endif</h2>
     <form action="/admin/product" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <ul class="styledForm">
@@ -23,7 +23,7 @@
                         type="file" name="image_url"</li>
             @if(isset($product->image_url))<li><img src="{{ URL::asset('assets/products/'.$product->image_url) }}" width='200px' height='200px'></li>@endif
             <li><label>Name<span class="required">*</span></label> <input
-                        type="text" name="name" class="field-long" @if(isset($product->name))value="{{$product->name}}"@endif/></li>
+                        type="text" pattern="[A-Za-z ]{1,25}" name="name" class="field-long" @if(isset($product->name))value="{{str_replace('_', ' ', $product['name'])}}"@endif/></li>
             <li><label>Price (in €)<span class="required">*</span></label> <input
                         type="number" step="any" name="price" class="field-long" @if(isset($product->price))value="{{$product->price}}"@endif/></li>
             <li><label>Alcohol (in %vol)<span class="required">*</span></label> <input

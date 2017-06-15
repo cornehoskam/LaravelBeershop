@@ -14,17 +14,18 @@
     @if($errors->any())
         <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
     @endif
-    <h2>Add, change or delete a category</h2>
-    <form action="/admin/categories/delete" method="POST">
+    <h2>Edit Categories</h2>
+        <a class="button" href="/admin/category">Add New Category</a>
+
+        <form action="/admin/categories/delete" method="POST">
         {{ csrf_field() }}
         <ul class="categories">
             @foreach ($categories as $category)
-                <li><input type="checkbox" name="delete[]" value="{{$category->id}}"><a href="/admin/category/{{$category->id}}">{{$category->id}} {{$category->name}}</a></li><br>
+                <li><input type="checkbox" name="delete[]" value="{{$category->id}}"><a href="/admin/category/{{$category->id}}">{{$category->id}}. {{str_replace('_', ' ', $category->name)}}</a></li><br>
             @endforeach
         </ul>
-        <button type="submit">Delete</button>
+        <button type="submit" class="btn btn-default">Delete Selected</button>
     </form>
-    <a class="button" href="/admin/category">Add</a>
 </div>
 </body>
 @include('layouts.footer')

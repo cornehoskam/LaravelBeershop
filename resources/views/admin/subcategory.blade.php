@@ -19,7 +19,7 @@
         <ul class="styledForm">
             <input type="hidden" name="parent_id" value="{{$parent_id}}">
             <li><label>Name<span class="required">*</span></label> <input
-                        type="text" name="name" class="field-long" @if(isset($category->name))value="{{$category->name}}"@endif/></li>
+                        type="text" name="name" pattern="[A-Za-z ]{1,25}" class="field-long" @if(isset($category->name))value="{{$category->name}}"@endif/></li>
             <li><input type="submit" name="save" value="Save" /></li>
         </ul>
     </form>

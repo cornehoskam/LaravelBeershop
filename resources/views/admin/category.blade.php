@@ -13,13 +13,13 @@
 @if($errors->any())
     <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
 @endif
-<h2>@if(isset($category->name)){{$category->name}} @else Add category @endif</h2>
+<h2>@if(isset($category->name)){{str_replace('_', ' ', $category->name)}} @else Add category @endif</h2>
     <form action="/admin/category" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <ul class="styledForm">
             <input type="hidden" name="id" value="@if(isset($category->id)){{$category->id}} @else 0 @endif" >
             <li><label>Name<span class="required">*</span></label> <input
-                        type="text" name="name" class="field-long" @if(isset($category->name))value="{{$category->name}}"@endif/></li>
+                        pattern="[A-Za-z ]{1,25}" type="text" name="name" class="field-long" @if(isset($category->name))value="{{str_replace('_', ' ', $category->name)}}"@endif/></li>
             <li><input type="submit" name="save" value="Save" /></li>
         </ul>
     </form>
@@ -31,7 +31,7 @@
                     <li><label>Sub Categories</label></li>
                         @foreach ($sub_categories as $sub_category)
                             <ul class="categories">
-                                 <li><a class="button" href="/admin/subcategories/delete/{{$sub_category->id}}">Delete</a><a>{{$sub_category->id}} <input type="text" name="name[{{$sub_category->id}}]" value="{{$sub_category->name}}"></a></li><br>
+                                 <li><a class="button" href="/admin/subcategories/delete/{{$sub_category->id}}">Delete</a><a>{{$sub_category->id}} <input type="text" pattern="[A-Za-z ]{1,25}" name="name[{{$sub_category->id}}]" value="{{str_replace('_', ' ', $sub_category->name)}}"></a></li><br>
                             </ul>
                         @endforeach
                     <li><input type="submit" name="save" value="save" /></li>

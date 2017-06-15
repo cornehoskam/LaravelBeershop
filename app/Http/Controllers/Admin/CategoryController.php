@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = categorie::all();
+        $categories = categorie::orderBy('id', 'ASC')->get();
         return view('admin/categories', compact('categories'));
     }
 
@@ -23,7 +23,7 @@ class CategoryController extends Controller
                categorie::where("id", "=", $id)->delete();
            }
        }
-       return CategoryController::index()->withErrors(['success', 'Category is deleted']);;
+       return CategoryController::index()->withErrors(['success', 'Selected Category/Categories Deleted']);;
    }
 
    public function showCategory($id=null){
