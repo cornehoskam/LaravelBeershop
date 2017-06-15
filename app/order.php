@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cart extends Model
-{
-    protected $fillable = array('user_id','product_id','amount');
+class order extends Model{
+    protected $fillable = array('user_id','cart_id','order_id');
     public $timestamps = false;
 }

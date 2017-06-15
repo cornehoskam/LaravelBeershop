@@ -20,6 +20,17 @@
         @endphp
         <h3><i> {{$product['description']}}</i></h3>
         <img src="{{ URL::asset('assets/products/'.$product['image_url']) }}" width='200px' height='200px'><br><br>
+        @if (Illuminate\Support\Facades\Auth::check())
+            <form method="post" action=/cart>
+                {{ csrf_field() }}
+                <ul class="styledForm">
+                    <input type="hidden" name="product_id" value="{{$product->id}}"/>
+                    <li><label>Amount</label> <input
+                                type="number" name="amount" class="field-number"  min="1" /></li>
+                    <li><input type="submit" value="Add to cart" name="buy" /></li>
+                </ul>
+            </form>
+        @endif
     </div>
 </body>
 </div>

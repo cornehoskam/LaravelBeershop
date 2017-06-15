@@ -16,6 +16,8 @@ Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 
 //Authentication Routes
+Auth::routes();
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
 //Category Routes
@@ -35,8 +37,14 @@ Route::post('Compare/Details', ['as' => 'compareDetails', 'uses' => 'CompareCont
 
 Route::post('Search', ['as' => 'search', 'uses' => 'SearchController@searchProduct']);
 
-Auth::routes();
-
+//login required routes
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/cart', 'CartController@index');
+    Route::post('/cart', 'CartController@addToCart');
+    Route::get('/order/details', 'OrderController@details');
+    Route::post('/order/place', 'UserController@addInfo');
+    Route::get('/order/payment', 'OrderController@payment');
+});
 
 //admin Routes
 Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
