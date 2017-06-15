@@ -57,6 +57,11 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
     Route::post('/admin/product', 'FileController@upload');
 
+    //users
+    Route::get('/admin/users', 'Admin\UserController@index');
+    Route::get('/admin/users/{id}', 'Admin\UserController@changeRights');
+    Route::post('/admin/users/delete', 'Admin\UserController@delete');
+
     //categories
     Route::get('/admin/categories', 'Admin\CategoryController@index');
     Route::post('/admin/categories/delete', 'Admin\CategoryController@delete');
@@ -69,5 +74,4 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
     Route::post('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
     Route::get('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
     Route::get('/admin/subcategory/add/{id}', 'Admin\SubcategoryController@showSubCategory');
-
 });
