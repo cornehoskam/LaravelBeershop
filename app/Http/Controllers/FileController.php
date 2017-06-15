@@ -40,7 +40,7 @@ class FileController extends Controller {
             }
         }
         else{
-           return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, Input::get('image_default'))->withErrors(['success', 'Product is saved']);
+           return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, Input::get('image_default'));
         }
     }
 }

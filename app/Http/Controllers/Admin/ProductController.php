@@ -45,7 +45,7 @@ class ProductController extends Controller
    }
 
    public function createOrUpdate(Request $request, $filename){
-       $required = array ('name','price', 'alcohol_contents','contents_ml','parent_category');
+       $required = array ('name','price', 'alcohol_contents','contents_ml','parent_category', 'image_url');
        $empty = array();
        $error = false;
 
@@ -56,9 +56,8 @@ class ProductController extends Controller
                }
             }
        if($error == true){
-           var_dump($empty);
            $request->merge(array('image_url' => $filename));
-           return ProductController::showProduct(null,$request)->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
+           return ProductController::showProduct($request->input('id'),$request)->withErrors(['error', "One or more required fields were left empty: ". join(', ', $empty)]);
        }
        else{
            $newName = str_replace(" ", "_", $request->input('name'));
