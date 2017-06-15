@@ -22,7 +22,7 @@
         {{ csrf_field() }}
         <ul class="categories">
             @foreach ($products as $product)
-                <li><input type="checkbox" name="delete[]" value="{{$product->id}}"><a href="/admin/product/{{$product->id}}">{{$product->id}} {{str_replace('_', ' ', $product->name)}}</a></li><br>
+                <li><input type="checkbox" name="delete[]" value="{{$product->id}}"><a href="/admin/product/{{$product->id}}">{{$product->id}}. {{str_replace('_', ' ', $product->name)}}</a></li><br>
             @endforeach
         </ul>
         <button type="submit">Delete Selected</button>

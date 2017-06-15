@@ -27,7 +27,7 @@
             @foreach($cart as $cartItem)
                 <?php $totalPrice = $cartItem->amount*$cartItem->product->price; $roundedPrice = number_format($totalPrice,2); $priceSum += $roundedPrice;?>
             <tr>
-                <td><img src='{{ URL::asset('assets/products/'.$cartItem->product->image_url) }}' width='50px' height='50px'></td><td>{{str_replace("_"," ",$cartItem->product->name)}}</td><td>{{$cartItem->amount}}</td><td> &euro;{{number_format($cartItem->product->price,2)}}</td>
+                <td><img src='{{ URL::asset('assets/products/'.$cartItem->product->image_url) }}' width='150px' height='150px'></td><td>{{str_replace("_"," ",$cartItem->product->name)}}</td><td>{{$cartItem->amount}}</td><td> &euro;{{number_format($cartItem->product->price,2)}}</td>
                 <td> &euro;{{$roundedPrice}}</td>       <td>
                     <form method="post" action='/cart' class="styledForm">
                         {{ csrf_field() }}
