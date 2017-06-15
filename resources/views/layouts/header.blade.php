@@ -41,4 +41,9 @@
         </div>
         <br>
     </nav>
+    <noscript>
+        <div id="noscript" style="position: absolute; top: 0; left: 0; background-color: #FFF; z-index: 999; height: 100%; width: 100%; text-align: center; padding-top: 50px;">
+            You must enable Javascript in order to use this site.
+        </div>
+    </noscript>
 @show
