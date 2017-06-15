@@ -32,10 +32,11 @@
                     <form method="post" action='/cart' class="styledForm">
                         {{ csrf_field() }}
                         <input type="hidden" name="product_id" value="{{$cartItem->product->id}}">
-                        <li><input type="submit" value="X" name="delete" class="cartButton"/></li>
-                        <li><input type="submit" value="-" name="remove" class="cartButton"/></li>
-                        <li><input type="submit" value="+" name="add" class="cartButton"/></li>
-                    </form>
+                        <li><input type="image" width="30px" height="30px" src="/assets/cart/plus.png" border="0" alt="Submit" value="+" name="add"/></li>
+                        <li><input type="image" width="30px" height="30px" src="/assets/cart/minus.png" border="0" alt="Submit" value="-" name="remove"/></li>
+                        <li><input type="image" width="30px" height="30px" src="/assets/cart/delete.png" border="0" alt="Submit" value="X" name="delete"/></li>
+
+                        </form>
                 </td>
             </tr>
             @endforeach
@@ -45,7 +46,7 @@
             <td> &nbsp; </td>
             <td> &euro;{{number_format($priceSum,2)}}</td>
         </table>
-
+        <br>
         <a class="button" href="/order/details">Place Order</a>
     @endif
 </div>
