@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\categorie;
-use App\product;
 use App\sub_categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

@@ -7,9 +7,7 @@ use App\sub_categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\product;
-use App\Http\Controllers\FileController;
 use File;
-use Storage;
 class ProductController extends Controller
 {
     public function index()

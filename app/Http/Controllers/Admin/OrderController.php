@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\order;
-use App\sub_categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\product;
-use App\Http\Controllers\FileController;
-use File;
 class OrderController extends Controller
 {
     public function index()
