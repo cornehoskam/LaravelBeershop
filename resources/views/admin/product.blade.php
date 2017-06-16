@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('layouts.admin.adminHeader', array('title'=>'Home'))
+@include('layouts.Admin.adminHeader', array('title'=>'Home'))
 @if($errors->any())
     <div class="{{$errors->getMessages()[0][0]}}">{{$errors->getMessages()[1][0]}}</div>
 @endif

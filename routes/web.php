@@ -49,33 +49,33 @@ Route::group(['middleware' => 'auth'], function () {
 //admin Routes
 Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function()
 {
-    Route::get('/admin', 'admin\AdminController@index');
+    Route::get('/admin', 'Admin\AdminController@index');
 
     //products
-    Route::get('/admin/products', 'admin\ProductController@index');
-    Route::post('/admin/products/delete', 'admin\ProductController@delete');
-    Route::get('/admin/product/{id?}', 'admin\ProductController@showProduct');
+    Route::get('/admin/products', 'Admin\ProductController@index');
+    Route::post('/admin/products/delete', 'Admin\ProductController@delete');
+    Route::get('/admin/product/{id?}', 'Admin\ProductController@showProduct');
     Route::post('/admin/product', 'FileController@upload');
 
     //users
-    Route::get('/admin/users', 'admin\UserController@index');
-    Route::get('/admin/users/{id}', 'admin\UserController@changeRights');
-    Route::post('/admin/users/delete', 'admin\UserController@delete');
+    Route::get('/admin/users', 'Admin\UserController@index');
+    Route::get('/admin/users/{id}', 'Admin\UserController@changeRights');
+    Route::post('/admin/users/delete', 'Admin\UserController@delete');
 
     //orders
-    Route::get('/admin/orders', 'admin\OrderController@index');
-    Route::post('/admin/orders/delete', 'admin\OrderController@delete');
+    Route::get('/admin/orders', 'Admin\OrderController@index');
+    Route::post('/admin/orders/delete', 'Admin\OrderController@delete');
 
     //categories
-    Route::get('/admin/categories', 'admin\CategoryController@index');
-    Route::post('/admin/categories/delete', 'admin\CategoryController@delete');
-    Route::get('/admin/category/{id?}', 'admin\CategoryController@showCategory');
-    Route::post('/admin/category', 'admin\CategoryController@createOrUpdate');
+    Route::get('/admin/categories', 'Admin\CategoryController@index');
+    Route::post('/admin/categories/delete', 'Admin\CategoryController@delete');
+    Route::get('/admin/category/{id?}', 'Admin\CategoryController@showCategory');
+    Route::post('/admin/category', 'Admin\CategoryController@createOrUpdate');
 
     //subcategories
-    Route::get('/admin/subcategories', 'admin\SubcategoryController@index');
-    Route::get('/admin/subcategories/delete/{id}', 'admin\SubcategoryController@delete');
-    Route::post('/admin/subcategory', 'admin\SubcategoryController@createOrUpdate');
-    Route::get('/admin/subcategory', 'admin\SubcategoryController@createOrUpdate');
-    Route::get('/admin/subcategory/add/{id}', 'admin\SubcategoryController@showSubCategory');
+    Route::get('/admin/subcategories', 'Admin\SubcategoryController@index');
+    Route::get('/admin/subcategories/delete/{id}', 'Admin\SubcategoryController@delete');
+    Route::post('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
+    Route::get('/admin/subcategory', 'Admin\SubcategoryController@createOrUpdate');
+    Route::get('/admin/subcategory/add/{id}', 'Admin\SubcategoryController@showSubCategory');
 });
