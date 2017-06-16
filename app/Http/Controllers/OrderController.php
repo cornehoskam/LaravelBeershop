@@ -44,7 +44,7 @@ class OrderController extends Controller
             $alreadyExists = order::where('order_id', $order_id)->exists();
         }
         foreach($cart as $cartItem){
-            $item = cart::find($cartItem)->first();
+            $item = cart::find($cartItem);
             $order = new order;
             $order->user_id = Auth::user()->id;
             $order->product_id = $item->product_id;
