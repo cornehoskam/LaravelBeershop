@@ -20,7 +20,7 @@
         {{ csrf_field() }}
         <ul class="categories">
             @foreach ($orders as $order)
-                <li><input type="checkbox" name="delete[]" value="{{$order->id}}">{{$order->order_id}}. <b>Status: </b>{{$order->status}} <b>Shopping Cart: </b>{{$order->product_amount}}x {{$order->product->name}}</li><br>
+                <li><input type="checkbox" name="delete[]" value="{{$order->order_id}}">{{$order->order_id}}. <b>Status: </b>{{$order->status}} <b>Shopping Cart: </b>@foreach ($order->products as $product){{$product->amount}}x {{$product->name}} @endforeach</li><br>
             @endforeach
         </ul>
         <button type="submit">Delete</button>
