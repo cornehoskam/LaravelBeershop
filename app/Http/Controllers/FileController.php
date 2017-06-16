@@ -40,7 +40,9 @@ class FileController extends Controller {
             }
         }
         else{
-            return Redirect::back()->withErrors(['error', 'No image file was provided']);
+            if($request->input('image_default')== null){
+            return Redirect::back()->withErrors(['error', 'No image file was provided']);}
+            return app('App\Http\Controllers\Admin\ProductController')->createOrUpdate($request, $request->input('image_default'));
         }
     }
 }
